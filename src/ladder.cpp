@@ -74,7 +74,7 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
                     ladder_queue.push(new_ladder);
             }
     }
-    return {"NO_LADDER_FOUND"};
+    return {};
 }
 
 void load_words(set<string> &word_list, const string &file_name) {
@@ -85,7 +85,7 @@ void load_words(set<string> &word_list, const string &file_name) {
 }
 
 void print_word_ladder(const vector<string> &ladder) {
-    if (ladder.size() == 0 || ladder[0] == "NO_LADDER_FOUND")
+    if (ladder.size() == 0)
         cout << "No word ladder found.";
     else {
     cout << "Word ladder found: ";

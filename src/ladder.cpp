@@ -13,7 +13,7 @@ bool edit_distance_within(const string &str1, const string &str2, int d) {
         for (int i = 0; i < str1.size(); ++i)
             if (str1[i] != str2[i])
                 ++diff_count;
-        return diff_count == 1 ? true : false;
+        return diff_count < 1 ? true : false;
     }
     // if d is -1 or 1, they are diff size. to be neighbors, one character is added or removed.
     // if d is -1, a character is added to str1 to get to str2.

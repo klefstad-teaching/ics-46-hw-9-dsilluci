@@ -38,5 +38,5 @@ void print_path(const vector<int> &v, int total) {
     // how would I know the total here? just distances[dst]?
     for (int x : v)
         cout << x << " ";
-    cout << endl << "Total cost is " << total;
+    cout << endl << "Total cost is " << total << endl;
 }

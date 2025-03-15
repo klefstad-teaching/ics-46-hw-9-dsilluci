@@ -8,7 +8,8 @@
 
 using namespace std;
 
-constexpr int INF = numeric_limits<int>::max();
+// constexpr int INF = numeric_limits<int>::max();
+constexpr int INF = 100000; // big number; im getting int overflow with above
 
 struct Edge {
     int src=0;

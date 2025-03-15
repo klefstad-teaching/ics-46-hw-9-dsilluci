@@ -13,7 +13,7 @@ bool edit_distance_within(const string &str1, const string &str2, int d) {
         for (int i = 0; i < str1.size(); ++i)
             if (str1[i] != str2[i])
                 ++diff_count;
-        return diff_count < 1 ? true : false;
+        return diff_count < 2 ? true : false;
     }
     // if d is -1 or 1, they are diff size. to be neighbors, one character is added or removed.
     // if d is -1, a character is added to str1 to get to str2.
@@ -21,11 +21,12 @@ bool edit_distance_within(const string &str1, const string &str2, int d) {
         // We can iterate through str2 until we see a mismatch. A mismatch means that we are at the removed
         // character in str1, so we skip it. If beyond this point we find another mismatch, they are not neighbors.
         int i = 0, j = 0;
-        while (j < str2.size()) {
+        while (i < str1.size() && j < str2.size()) {
             if (str1[i] != str2[j++])
                 continue;
             ++i;
         }
+        if (j != str2.size() && j == i) return true;
         // if j - i != 1, then there was not only one mismatch
         return j - i == 1 ? true : false;
     }
@@ -33,11 +34,12 @@ bool edit_distance_within(const string &str1, const string &str2, int d) {
         // same, but a character is added to str1 to get to str2.
         // we can just treat this backwards to get a very similar process to before
         int i = 0, j = 0;
-        while (j < str1.size()) {
+        while (j < str1.size() && i < str2.size()) {
             if (str2[i] != str1[j++])
                 continue;
             ++i;
         }
+        if (j != str1.size() && j == i) return true;
         return j - i == 1 ? true : false;
     }
 }
